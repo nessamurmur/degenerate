@@ -26,10 +26,12 @@ In your spec:
 
 ```rb
 describe "#reverse" do
-  data(:string) { generate(:string) }
+  generative do
+    data(:string) { generate(:string) }
 
-  it "should preserve length" do
-    expect(string.reverse.length).to eq(string.length)
+    it "should preserve length" do
+      expect(string.reverse.length).to eq(string.length)
+    end
   end
 end
 ```
