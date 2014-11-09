@@ -1,5 +1,7 @@
 # Degenerate
 
+[![Codeship Status for niftyn8/degenerate](https://codeship.com/projects/b2753af0-4a18-0132-8cc7-7ac1f13cf35d/status)](https://codeship.com/projects/46223)
+
 TODO: Write a gem description
 
 ## Installation
