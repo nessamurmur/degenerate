@@ -16,7 +16,7 @@ module Degenerate::Generators
     private
 
     def random_string(length)
-      Array.new(length) { "" << rand(0..3000) }.join
+      [].class.new(length) { "" << rand(0..3000) }.join
     end
 
     def random_int
