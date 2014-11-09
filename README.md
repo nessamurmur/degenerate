@@ -2,7 +2,7 @@
 
 [![Codeship Status for niftyn8/degenerate](https://codeship.com/projects/b2753af0-4a18-0132-8cc7-7ac1f13cf35d/status)](https://codeship.com/projects/46223)
 
-TODO: Write a gem description
+Degenerate is a random data generator for use with [Generative](https://github.com/justincampbell/generative).
 
 ## Installation
 
@@ -12,15 +12,27 @@ Add this line to your application's Gemfile:
 
 And then execute:
 
-    $ bundle
+    $ bundle install
 
-Or install it yourself as:
+Next require it in your `spec/spec_helper.rb` file:
 
-    $ gem install degenerate
+    require 'degenerate'
+
+Degenerate automatically registers several primative generators with generative.
 
 ## Usage
 
-TODO: Write usage instructions here
+In your spec:
+
+```rb
+describe "#reverse" do
+  data(:string) { generate(:string) }
+
+  it "should preserve length" do
+    expect(string.reverse.length).to eq(string.length)
+  end
+end
+```
 
 ## Contributing
 
