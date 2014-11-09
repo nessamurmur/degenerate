@@ -21,7 +21,7 @@ RSpec.describe Degenerate::Generators::Integer do
 
     describe "#initialize with a limit" do
       generative do
-        let(:limit) { described_class.new.random_number(0).call }
+        let(:limit) { described_class.new.send(:random_number, 0).call }
         data(:max_generator) { described_class.new(max: limit).to_data }
 
         it "should never be greater than the maximum" do
@@ -48,23 +48,23 @@ RSpec.describe Degenerate::Generators::Integer do
 
     describe "#random_number" do
       generative do
-        let(:limit) { described_class.new.random_number(0).call }
+        let(:limit) { described_class.new.send(:random_number, 0).call }
         data(:int) { described_class.new }
 
         it "should be between INTEGER_MIN and INTEGER_MAX" do
-          expect(int.random_number.call)
+          expect(int.send(:random_number).call)
             .to be < described_class::INTEGER_MAX
-          expect(int.random_number.call)
+          expect(int.send(:random_number).call)
             .to be > described_class::INTEGER_MIN
         end
 
-        data(:n_with_min) { int.random_number(limit).call }
+        data(:n_with_min) { int.send(:random_number, limit).call }
 
         it "should be greater than the minimum" do
           expect(n_with_min).to be > limit
         end
 
-        data(:n_with_max) { int.random_number(nil, limit).call }
+        data(:n_with_max) { int.send(:random_number, nil, limit).call }
 
         it "should be less than the maximum" do
           expect(n_with_max).to be < limit

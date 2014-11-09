@@ -9,14 +9,16 @@ module Degenerate::Generators
       @generator = random_number(opts[:min], opts[:max])
     end
 
+    def to_data
+      generator
+    end
+
+    private
+
     def random_number(min=nil, max=nil)
       min ||= INTEGER_MIN
       max ||= INTEGER_MAX
       ->() { rand(min..max) }
-    end
-
-    def to_data
-      generator
     end
   end
 end
