@@ -1,4 +1,5 @@
 require_relative 'generators/integer'
+require_relative 'generators/string'
 
 module Degenerate
   module Generators
