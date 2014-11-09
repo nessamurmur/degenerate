@@ -1,6 +1,6 @@
 require 'degenerate/version'
 require 'degenerate/generators'
+require 'generative'
 
 module Degenerate
-  # Your code goes here...
 end
