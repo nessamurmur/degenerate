@@ -5,14 +5,8 @@ module Degenerate::Generators
 
     attr_accessor :generator
 
-    def initialize(limit=nil)
-      srand(Time.now.to_i)
-      @generator = if limit
-        min, max = -limit, limit
-        random_number(min, max)
-      else
-        random_number
-      end
+    def initialize(opts={})
+      @generator = random_number(opts[:min], opts[:max])
     end
 
     def random_number(min=nil, max=nil)

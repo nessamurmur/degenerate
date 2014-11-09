@@ -22,14 +22,16 @@ RSpec.describe Degenerate::Generators::Integer do
     describe "#initialize with a limit" do
       generative do
         let(:limit) { described_class.new.random_number(0).call }
-        data(:generator) { described_class.new(limit).to_data }
+        data(:max_generator) { described_class.new(max: limit).to_data }
 
-        it "should never be greater than the limit" do
-          expect(generator.call).to be < limit
+        it "should never be greater than the maximum" do
+          expect(max_generator.call).to be < limit
         end
 
-        it "should never be less than the opposite of the limit" do
-          expect(generator.call).to be > -limit
+        data(:min_generator) { described_class.new(min: limit).to_data }
+
+        it "should never be less than the minimum" do
+          expect(min_generator.call).to be > limit
         end
       end
     end
