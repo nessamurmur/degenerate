@@ -6,9 +6,9 @@ require 'degenerate/version'
 Gem::Specification.new do |spec|
   spec.name          = "degenerate"
   spec.version       = Degenerate::VERSION
-  spec.authors       = ["Nate West", "Eric West"]
-  spec.email         = ["natescott.west@gmail.com", "esw9999@gmail.com}"]
-  spec.summary       = %q{Random data generator}
+  spec.authors       = ["Nate West", "Eric West", "Jack Newton"]
+  spec.email         = ["natescott.west@gmail.com", "esw9999@gmail.com", "eternal.turtles@gmail.com"]
+  spec.summary       = %q{Random data generator for use with Generative.}
   spec.description   = %q{Random data generator for use with Generative.}
   spec.homepage      = "http://github.com/niftyn8/degenerate"
   spec.license       = "MIT"
