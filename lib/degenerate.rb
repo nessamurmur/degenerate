@@ -7,4 +7,5 @@ module Degenerate
   Generative.register_generator(:integer, Generators.integer)
   Generative.register_generator(:array, Generators.array)
   Generative.register_generator(:any, Generators.any)
+  Generative.register_generator(:http_status, Generators.http_status)
 end

@@ -42,4 +42,15 @@ RSpec.describe Degenerate do
       end
     end
   end
+
+  describe "http status generator" do
+    generative do
+      data(:status) { generate(:http_status) }
+
+      it "registers an http status generator" do
+        expect(Degenerate::Generators::HTTP_STATUSES)
+          .to include(status)
+      end
+    end
+  end
 end

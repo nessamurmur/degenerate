@@ -1,4 +1,4 @@
-require_relative '../spec_helper.rb'
+require_relative '../spec_helper'
 
 RSpec.describe Degenerate::Generators do
   describe ".integer" do
@@ -84,6 +84,17 @@ RSpec.describe Degenerate::Generators do
 
       it "will never be negative" do
         expect(Degenerate::Generators.random_int).to be >= 0
+      end
+    end
+  end
+
+  describe ".http_status" do
+    generative do
+      let(:statuses) { Degenerate::Generators::HTTP_STATUSES }
+
+      it "returns a valid http status" do
+        status = Degenerate::Generators.http_status.call
+        expect(statuses).to include(status)
       end
     end
   end
