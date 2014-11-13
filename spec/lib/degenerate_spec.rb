@@ -30,4 +30,16 @@ RSpec.describe Degenerate do
       end
     end
   end
+
+  describe "any generator" do
+    generative do
+      data(:any) { generate(:array) }
+
+      it "registers an any generator" do
+        class_name = any.class.to_s.downcase.to_sym
+        expect(Degenerate::Generators::GENERATORS)
+          .to include(class_name)
+      end
+    end
+  end
 end

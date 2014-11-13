@@ -58,6 +58,21 @@ RSpec.describe Degenerate::Generators do
       it "'s generator returns a array" do
         expect(Degenerate::Generators.array.call).to be_a(Array)
       end
+
+      let(:limit) { generate(:integer, min: 0, max: 100) }
+
+      it "limits the array to a given size" do
+        array = Degenerate::Generators.array.call(limit: limit)
+        expect(array.size).to be <= limit
+      end
+
+      let(:generated) { generate(:any) }
+
+      it "generate an array from 1 given generator" do
+        array = Degenerate::Generators.array.call(limit: limit, of: generated)
+        result_classes = array.map(&:class)
+        result_classes.all? { |c| expect(c).to eq(generated.class) }
+      end
     end
   end
 
