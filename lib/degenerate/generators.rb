@@ -8,7 +8,7 @@ module Degenerate
     end
 
     def self.string
-      ->(opts={}) { random_string(opts[:length] || random_int) }
+      ->(opts={}) { random_string(opts[:size] || random_int) }
     end
 
     def self.array
