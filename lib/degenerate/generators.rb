@@ -8,7 +8,11 @@ module Degenerate
     end
 
     def self.string
-      ->(opts={}) { random_string(opts[:size] || random_int) }
+      ->(opts={}) {
+        chars = opts[:of] || default_chars
+        size = opts[:size] || random_int
+        random_string_of(chars, size)
+      }
     end
 
     def self.array
@@ -17,8 +21,12 @@ module Degenerate
 
     private
 
-    def self.random_string(length)
-      [].class.new(length) { "" << rand(0..3000) }.join
+    def self.default_chars
+      ('1'..'z').to_a
+    end
+
+    def self.random_string_of(chars, size)
+      [].class.new(size) { chars.sample }.join
     end
 
     def self.random_int
