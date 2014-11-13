@@ -10,8 +10,8 @@ module Degenerate
     def self.string
       ->(opts={}) {
         chars = opts[:of] || default_chars
-        size = opts[:size] || random_int
-        random_string_of(chars, size)
+        limit = opts[:limit] || random_int
+        random_string_of(chars, limit)
       }
     end
 
@@ -25,12 +25,12 @@ module Degenerate
       ('1'..'z').to_a
     end
 
-    def self.random_string_of(chars, size)
-      [].class.new(size) { chars.sample }.join
+    def self.random_string_of(chars, limit)
+      [].class.new(random_int(limit)) { chars.sample }.join
     end
 
-    def self.random_int
-      Degenerate::Generators.integer.call(min: 0, max: 9999)
+    def self.random_int(limit=9999)
+      Degenerate::Generators.integer.call(min: 0, max: limit)
     end
   end
 end

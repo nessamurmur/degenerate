@@ -33,7 +33,7 @@ RSpec.describe Degenerate::Generators do
         expect(Degenerate::Generators.string.call).to be_a(String)
       end
 
-      data(:chars) { generate(:string, size: 10).split('') }
+      data(:chars) { generate(:string, limit: 10).split('') }
 
       it "only uses characters from user input when given a list of characters" do
         string = Degenerate::Generators.string.call(of: chars)
@@ -43,7 +43,7 @@ RSpec.describe Degenerate::Generators do
       data(:limit) { generate(:integer, min: 0, max: 100) }
 
       it "limits strings to a given size" do
-        expect(Degenerate::Generators.string.call(size: limit).size)
+        expect(Degenerate::Generators.string.call(limit: limit).size)
           .to be <= limit
       end
     end
