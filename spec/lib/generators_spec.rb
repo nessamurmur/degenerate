@@ -66,7 +66,7 @@ RSpec.describe Degenerate::Generators do
         expect(array.size).to be <= limit
       end
 
-      let(:generated) { generate(:any) }
+      let(:generated) { generate([:integer, :string].sample) }
 
       it "generate an array from 1 given generator" do
         array = Degenerate::Generators.array.call(limit: limit, of: generated)
