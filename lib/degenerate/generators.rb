@@ -33,7 +33,7 @@ module Degenerate
     end
 
     def self.http_status
-      ->() { HTTP_STATUSES.sample }
+      ->(_={}) { HTTP_STATUSES.sample }
     end
 
     private

@@ -98,4 +98,35 @@ RSpec.describe Degenerate::Generators do
       end
     end
   end
+
+  describe "all generators" do
+    generative do
+      data(:with_arg) { generate(:any_with_arg) }
+      data(:without_arg) { generate(:any_without_arg) }
+
+      it "accepts an argument" do
+        expect { with_arg }.not_to raise_error
+      end
+
+      it "doesn't require an arg" do
+        expect { without_arg }.not_to raise_error
+      end
+
+      Generative.register_generator(:any_with_arg) do |_|
+        generator = Generative.manager.generators.keys.select { |g|
+          !g.to_s.match(/any/)
+        }.sample
+
+        Generative.find_and_call(generator, limit: 10)
+      end
+
+      Generative.register_generator(:any_without_arg) do |_|
+        generator = Generative.manager.generators.keys.select { |g|
+          !g.to_s.match(/any/)
+        }.sample
+
+        Generative.find_and_call(generator)
+      end
+    end
+  end
 end
