@@ -22,7 +22,8 @@ module Degenerate
     def self.array
       ->(opts={}) {
         limit = opts[:limit] || random_int
-        of = Array(opts [:of] || send([:integer, :string].sample).call)
+        of = Array(opts [:of] ||
+                   send([:integer, :string].sample).call(limit: 1000))
         array_of(limit, *of)
       }
     end
