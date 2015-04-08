@@ -33,11 +33,11 @@ RSpec.describe Degenerate do
 
   describe "any generator" do
     generative do
-      data(:any) { generate(:array) }
+      data(:any) { generate(:any) }
 
       it "registers an any generator" do
         class_name = any.class.to_s.downcase.to_sym
-        expect(Degenerate::Generators::GENERATORS)
+        expect(Degenerate::Generators::GENERATORS.map{|g| g == :integer ? :fixnum : g})
           .to include(class_name)
       end
     end

@@ -8,3 +8,4 @@ RSpec::Core::RakeTask.new
 Generative::RakeTask.new
 
 task :default => :spec
+
